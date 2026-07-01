@@ -47,3 +47,18 @@ Options:
 ### To access App
 - Go Browser and type: `34.243.60.2:3000/`
 
+
+
+## dfgdf
+` sudo npm install pm2 -g`
+`npm install`
+`pm2 kill`
+`pm2 start index.js`
+
+### Install nginx
+`sudo apt install nginx -y`
+
+- proxy_pass http
+
+`sudo systemctl restart nginx` - to restart a process
+`sudo systemctl status nginx` - check for problems 
