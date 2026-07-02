@@ -1,0 +1,14 @@
+# Mac system files
+.DS_Store
+
+# Python cache
+__pycache__/
+*.pyc
+
+# Secrets / API keys
+weather_api_key.py
+config.py
+.env
+
+# PyCharm project settings
+.idea/

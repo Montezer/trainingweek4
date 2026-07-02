@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Postcode Weather App</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #74b9ff, #dfe6e9);
+            min-height: 100vh;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container {
+            background: white;
+            width: 420px;
+            padding: 30px;
+            border-radius: 18px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            text-align: center;
+        }
+
+        h1 {
+            margin-top: 0;
+            color: #2d3436;
+        }
+
+        form {
+            margin-bottom: 25px;
+        }
+
+        input {
+            width: 80%;
+            padding: 12px;
+            border: 1px solid #b2bec3;
+            border-radius: 8px;
+            font-size: 16px;
+            margin-bottom: 12px;
+        }
+
+        button {
+            padding: 12px 18px;
+            border: none;
+            border-radius: 8px;
+            background: #0984e3;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #006bbd;
+        }
+
+        .weather-card {
+            margin-top: 20px;
+            padding: 20px;
+            border-radius: 14px;
+            background: #f1f2f6;
+        }
+
+        .temperature {
+            font-size: 42px;
+            font-weight: bold;
+            color: #0984e3;
+        }
+
+        .description {
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+
+        .details {
+            text-align: left;
+            margin-top: 15px;
+            line-height: 1.8;
+        }
+
+        .error {
+            color: #d63031;
+            font-weight: bold;
+            margin-top: 15px;
+        }
+
+        .api-hint {
+            font-size: 13px;
+            color: #636e72;
+            margin-top: 25px;
+        }
+
+        code {
+            background: #dfe6e9;
+            padding: 2px 5px;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>🌤️ Postcode Weather</h1>
+
+        <form method="GET" action="/">
+            <input
+                type="text"
+                name="postcode"
+                placeholder="Enter postcode e.g. SW1A 1AA"
+                required
+            >
+            <br>
+            <button type="submit">Get Weather</button>
+        </form>
+
+        {% if error %}
+            <p class="error">{{ error }}</p>
+        {% endif %}
+
+        {% if weather %}
+            <div class="weather-card">
+                <h2>{{ weather.postcode }}</h2>
+                <p>{{ weather.area }}</p>
+
+                <img src="{{ weather.icon_url }}" alt="Weather icon">
+
+                <p class="description">{{ weather.description }}</p>
+                <p class="temperature">{{ weather.temperature }}°C</p>
+
+                <div class="details">
+                    <p><strong>Feels like:</strong> {{ weather.feels_like }}°C</p>
+                    <p><strong>Humidity:</strong> {{ weather.humidity }}%</p>
+                    <p><strong>Wind speed:</strong> {{ weather.wind_speed }} m/s</p>
+                </div>
+            </div>
+        {% endif %}
+
+        <p class="api-hint">
+            API example:
+            <br>
+            <code>/weather_api?postcode=SW1A 1AA</code>
+        </p>
+    </div>
+</body>
+</html>

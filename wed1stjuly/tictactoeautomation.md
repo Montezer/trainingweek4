@@ -287,3 +287,8 @@ Install command, for example npm install or pip install
 Start command, for example pm2 start index.js or python app.py
 Nginx proxy_pass port
 ```
+
+### notes to try utilise and understand
+- sudo sed -i 's|try_files \$uri \$uri/ =404;|proxy_pass http://localhost:3000;|' /etc/nginx/sites-available/default
+ 
+
